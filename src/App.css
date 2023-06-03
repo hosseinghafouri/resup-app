@@ -1,11 +1,8 @@
 /* Res Box */
-
 .App {
-  /* text-align: center; */
-}
 
+}
 .res_box {
-  direction: rtl;
   background-color: #fff;
   width: 500px;
   padding: 2px;
@@ -13,10 +10,12 @@
   /* border-radius: 5px; */
   padding: 0px;
   display: flex;
+  /* border-left: 5px solid var(--waiting_color); */
+  margin-bottom: 50px;
 }
 
 .icon {
-  background-color: #3b82f6;
+  background-color: var(--waiting_color);
   width: 50px;
   display: flex;
   align-items: center;
@@ -27,5 +26,32 @@
 .pager_num {
   font-size: 20px;
   font-weight: bolder;
+  padding-right: 20px;
 }
 
+.tick_box {
+  border-radius: 50%;
+  width: 20px;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  margin-right: 40%;
+}
+
+.button button {
+  border: 0px;
+  color: var(--turn_color);
+  background-color: #FFF;
+  border-radius: 5px;
+  /* padding: 5px; */
+  display: flex;
+}
+
+
+.erorr_btn {
+  margin-right: 5px;
+  color: var(--off_color) !important;
+  font-size: 20px;
+}

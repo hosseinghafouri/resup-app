@@ -1,5 +1,14 @@
+:root {
+  --off_color : #D11A2A;
+  --waiting_color : #3b82f6;
+  --turn_color : #1acc8d;
+}
+html {
+  scroll-behavior: smooth;
+}
 body {
   margin: 0;
+  direction: rtl;
   font-family: Vazirmatn, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -11,4 +20,5 @@ body {
   align-items: center;
   justify-content: center;
   /* font-size: calc(10px + 2vmin); */
+  margin-top: 5%;
 }

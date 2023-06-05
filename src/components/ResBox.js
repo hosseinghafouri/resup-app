@@ -19,9 +19,13 @@ function Icon(props) {
   );
 }
 
-function Button_check() {
+function Button_check(props) {
+  const check = (event) => {
+    console.log(event.target.parentElement.getAttribute("ip"));
+  }
+
   return (
-    <button className="check_btn">
+    <button className="check_btn" onClick={check} ip={props.ip}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="30"
@@ -35,9 +39,12 @@ function Button_check() {
     </button>
   );
 }
-function Button_erorr() {
+function Button_erorr(props) {
+  const erorr = (event) => {
+    console.log(event.target.parentElement.getAttribute("ip"));
+  }
   return (
-    <button className="erorr_btn">
+    <button className="erorr_btn" onClick={erorr} ip={props.ip}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="40"
@@ -53,7 +60,6 @@ function Button_erorr() {
 }
 
 function ResBox(props) {
-  console.log();
   if (props.status === "on") {
     return (
       <div
@@ -63,7 +69,7 @@ function ResBox(props) {
         <Icon colorValue="var(--turn_color)" />
         <p className="pager_num">پیجر شماره:{props.number}</p>
         <div className="button">
-          <Button_erorr />
+          <Button_erorr ip={props.ipURL} />
         </div>
       </div>
     );
@@ -76,8 +82,8 @@ function ResBox(props) {
         <Icon colorValue="var(--waiting_color)" />
         <p className="pager_num">پیجر شماره:{props.number}</p>
         <div className="button">
-          <Button_check />
-          <Button_erorr />
+          <Button_check ip={props.ipURL} />
+          <Button_erorr ip={props.ipURL} />
         </div>
       </div>
     );

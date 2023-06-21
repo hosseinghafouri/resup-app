@@ -11,7 +11,8 @@ const Pager = {
     page: (PagerIp) => {
 
         let client = dgram.createSocket('udp4')
-        client.send(this.pagingMessage, 0, this.pagingMessage.length, this.listeningPort, PagerIp, () => {
+        const pagingMessage = this.pagingMessage;
+        client.send(pagingMessage, 0, 4, this.listeningPort, PagerIp, () => {
 
             client.close()
         });

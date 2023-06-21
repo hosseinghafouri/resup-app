@@ -1,4 +1,6 @@
 // import photo from "./images/w.png";
+import {ipcRenderer} from 'electron';
+import { RENDER_DELETE_PAGER, RENDER_PAGE } from '../../utils/constants';
 
 function Icon(props) {
   return (
@@ -21,11 +23,19 @@ function Icon(props) {
 
 function Button_check(props) {
   const check = (event) => {
-    console.log(event.target.parentElement.getAttribute("ip"));
+
+
+    let sendData = {
+      Id: event.target.parentElement.getAttribute("idam") * 1 ,
+      Ip: event.target.parentElement.getAttribute("ipam")
+    }
+    console.log(sendData);
+
+    ipcRenderer.send(RENDER_PAGE, sendData)
   }
 
   return (
-    <button className="check_btn" onClick={check} ip={props.ip}>
+    <button className="check_btn" onClick={check} idam={props.id} ipam={props.ip}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="30"
@@ -41,10 +51,16 @@ function Button_check(props) {
 }
 function Button_erorr(props) {
   const erorr = (event) => {
-    console.log(event.target.parentElement.getAttribute("ip"));
+
+    let sendData = {
+      Id: event.target.parentElement.getAttribute("idam"),
+      Ip: event.target.parentElement.getAttribute("ipam")
+    }
+
+    ipcRenderer.send(RENDER_DELETE_PAGER, sendData)
   }
   return (
-    <button className="erorr_btn" onClick={erorr} ip={props.ip}>
+    <button className="erorr_btn" onClick={erorr} idam={props.id} ipam={props.ip}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="40"
@@ -69,7 +85,7 @@ function ResBox(props) {
         <Icon colorValue="var(--turn_color)" />
         <p className="pager_num">پیجر شماره:{props.number}</p>
         <div className="button">
-          <Button_erorr ip={props.ipURL} />
+          <Button_erorr id={props.number} ip={props.ipURL} />
         </div>
       </div>
     );
@@ -82,8 +98,8 @@ function ResBox(props) {
         <Icon colorValue="var(--waiting_color)" />
         <p className="pager_num">پیجر شماره:{props.number}</p>
         <div className="button">
-          <Button_check ip={props.ipURL} />
-          <Button_erorr ip={props.ipURL} />
+          <Button_check id={props.number} ip={props.ipURL} />
+          <Button_erorr id={props.number} ip={props.ipURL} />
         </div>
       </div>
     );

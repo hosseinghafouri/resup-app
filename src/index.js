@@ -1,17 +1,21 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import { render } from 'react-dom';
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import {ipcRenderer} from 'electron';
+window.React = React;
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+const {
+    MAIN_PAGERS_DATA, 
+    RENDER_DELETE_PAGER,
+    RENDER_PAGE
+} = require('../utils/constants');
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+
+
+ipcRenderer.on(MAIN_PAGERS_DATA, (event, arg)=>{
+    console.log(arg);
+    render( <App argument={arg} />, document.getElementById('root') );
+})
+
+//render( <App />, document.getElementById('root') );

@@ -3,10 +3,13 @@ import ResBox from "./components/ResBox";
 import Header from "./components/Header"
 import "./App.css";
 
-let data = {
-  pagers : [[1,'on','192.168.1.4'],[2,'waiting','172.168.2.7'],[8,'off', '192.128.1.8']],
-}
-function App() {
+
+
+function App(props) {
+  let data = {
+    pagers : props.argument,
+  }
+  console.log(data.pagers);
   return (
     <div>
     <Header />

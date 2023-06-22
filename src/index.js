@@ -2,6 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import './index.css';
 import App from './App';
+import Header from "./components/Header"
 import {ipcRenderer} from 'electron';
 window.React = React;
 
@@ -12,10 +13,10 @@ const {
 } = require('../utils/constants');
 
 
-
+render( <Header /> , document.getElementById('header') );
 ipcRenderer.on(MAIN_PAGERS_DATA, (event, arg)=>{
     console.log(arg);
-    render( <App argument={arg} />, document.getElementById('root') );
+    render( <div><App argument={arg} /></div> , document.getElementById('root') );
 })
 
 //render( <App />, document.getElementById('root') );

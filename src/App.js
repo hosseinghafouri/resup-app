@@ -1,6 +1,5 @@
 // import logo from './logo.svg';
 import ResBox from "./components/ResBox";
-import Header from "./components/Header"
 import "./App.css";
 
 
@@ -12,8 +11,7 @@ function App(props) {
   console.log(data.pagers);
   return (
     <div>
-    <Header />
-    
+
     <div className="App">
       {data.pagers.map((item) => (
         <ResBox number={item[0]} status={item[1]} ipURL={item[2]} />
